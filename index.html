@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/anaconda.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/app.js" defer></script>
+    <title>Snake</title>
+</head>
+<body>
+    <div class="game">
+        <h1 class="game__h1">Snake</h1>
+        <div class="msg_container" id="msg"></div>
+        <div class="game__container">
+            <div class="game__points">
+                <div class="game__score">Score: <span class="game__span" id="score">0</span> puntos</div>
+                <div class="game__hiscore">High Score: <span class="game__span" id="high"></span> puntos</div>
+            </div>
+            <div class="game__board" id="board">
+            </div>
+            <div class="game__buttons btn" id="btn">
+                <div class="btn__up btn--active" id="ArrowUp"><img class="arrow" src="./assets/arrow-up.svg" alt=""></div>
+                <div class="btn__left btn--active" id="ArrowLeft"><img class="arrow" src="./assets/arrow-left.svg" alt=""></div>
+                <div class="btn__right btn--active" id="ArrowRight"><img class="arrow" src="./assets/arrow-right.svg" alt=""></div>
+                <div class="btn__down btn--active" id="ArrowDown"><img class="arrow" src="./assets/arrow-down.svg" alt=""></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

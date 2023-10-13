@@ -1,0 +1,175 @@
+:root {
+    --clr_verde: #60c01b;
+    --clr_verde_oscuro: #2f9d27;
+    --clr_snake: #0f8807;
+    --clr__case: #efefef;
+    --clr__btn: #d3d3d3;
+    --clr__font: #414141;
+    --clr__title:#d9d7d7;
+
+
+    --bdr__case:16px;
+    --bdr__btn:8px;
+}
+
+body {
+    max-width: 31.25rem;
+    height: 100vh;
+    padding: 0.1px;
+    margin: 0.1px;
+    box-sizing: border-box;
+    margin: auto;
+    color: var(--clr__font);
+   
+    background-image: url(../assets/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+}
+
+.game {
+    position: relative;
+}
+
+.msg_container {
+    position: absolute;
+    top:calc(50% - (21.5625rem / 2));
+    left: calc(50% - (21.875rem / 2));
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    
+    width: 21.875rem;
+    height: 21.875rem;
+    padding-bottom: 3.125rem;
+    border: 10px solid var(--clr_snake);
+    
+    background-image: url(../assets/gameover.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    opacity: 0;
+}
+
+.msg_container--active{
+    opacity: 1;
+}
+
+
+.game__h1 {
+    font-size: 2.625rem;
+    color: var(--clr__title);
+    margin: 15px 0;
+}
+
+.game__container {
+    width: 21.875rem;
+    margin: auto;
+    border-radius: var(--bdr__case);
+    background-color: var(--clr__case);
+    box-shadow: 10px 10px 0px 4px #808080;
+}
+
+.game__points {
+   padding: 10px;
+   font-size: 18px;
+   font-weight: bold;
+}
+
+.game__score,
+.game__hiscore {
+
+}
+
+.game__span {}
+
+
+
+.game__board {
+    width: 21.875rem;
+    height: 21.875rem;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    background-color: var(--clr_verde);
+    
+}
+
+
+
+.game__snake {
+    width: 100%;
+    height: 100%;
+    background: var(--clr_snake);
+}
+
+.head{
+    background-color: green;
+}
+
+.game__apple {
+    width: 100%;
+    height: 100%;
+}
+
+.game__buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 10px;
+    margin: auto;
+}
+
+.game__buttons img{
+    pointer-events: none;
+    user-select: none;
+}
+
+
+.btn__up,
+.btn__left,
+.btn__right,
+.btn__down,
+.btn__restart {
+    background: var(--clr__btn);
+    background: linear-gradient(rgb(187, 187, 187) 0%, rgba(242, 242, 242, 1) 100%);
+    border-radius: var(--bdr__btn);
+    box-shadow: 0px 2px 0px 2px #808080, 0px 0px 0px 1px #b4b4b4 inset;
+}
+
+.btn--active:active{
+    transform: translate(2px, 2px);
+    box-shadow: 0px 2px 0px 2px #636363, 0px 0px 0px 1px #8b8b8b inset;
+}
+
+.btn__up {
+    grid-area: 1/2;
+}
+
+.btn__left {
+    grid-area: 2/1;
+}
+
+.btn__right {
+    grid-area: 2/3;
+}
+
+.btn__down {
+    grid-area: 3/2;
+}
+
+.arrow {
+    width: 1.875rem;
+    height: 1.875rem;
+    margin: auto;
+}
+
+.btn__restart{
+    padding: 8px 32px;
+    font-size: 17px;
+   
+}
