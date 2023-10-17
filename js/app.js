@@ -5,13 +5,18 @@ const BOARD = $("#board");
 const BTN = $("#btn");
 const MSG=$("#msg");
 const GAMECONTAINER=$(".msg_container");
+const LEVEL=$("#level");
+
+let level=1;
+let scoreLevel=0;
+let timeLevel=300;
 let score=0;
 let highScore= localStorage.getItem("high") || 0;
 HIGH.textContent=highScore;
 let limitX=20;
 let limitY=20;
 let foodY, foodX;
-let snakeY = 5, snakeX = 10;
+let snakeY = 1, snakeX = 1;
 let moveY = 0, moveX = 0;
 let snakeBody = [];
 let setIntervalId;
@@ -44,6 +49,13 @@ function gameOver(){
    
 }
 
+const clearFunction =()=>{
+
+    clearInterval(setIntervalId);
+    setIntervalId= setInterval(initGame, timeLevel)
+    console.log(timeLevel);
+}
+
 
 const chanFoodPosition = () => {
     foodX = Math.floor((Math.random() * 20) + 1);
@@ -66,8 +78,20 @@ function changeDirection(e) {
    
 }
 
+function checkFoodPosition(){
+    for (let i=1; i<snakeBody.length; i++){
+        if(foodY==snakeBody[i][0]  && foodX==snakeBody[i][1]){
+            chanFoodPosition();
+            console.log("CAMBIO POSICION");
+        }
+    }
+}
+
 const initGame = () => {
 
+    console.log(timeLevel);
+    checkFoodPosition();
+   
     let htmlMarkup = `<div class="game__apple" style="grid-area: ${foodY} / ${foodX}">
     <img src="./assets/manzana.png" class="game__apple" alt="">
     </div>`;
@@ -77,6 +101,16 @@ const initGame = () => {
         score++;
         SCORE.textContent = score;
         
+        console.log(score, scoreLevel, level)
+
+        if(score >= (scoreLevel + 5)){
+            timeLevel-=25;
+            scoreLevel=score;
+            level++
+            LEVEL.textContent= level;
+            clearFunction();      
+        }
+
         highScore = score >= highScore ?score : highScore;
         localStorage.setItem("high", highScore);
         
@@ -109,7 +143,8 @@ const initGame = () => {
 }
 
 chanFoodPosition();
-setIntervalId= setInterval(initGame, 200);
+setIntervalId= setInterval(initGame, timeLevel);
+
 
 BTN.addEventListener("click",  changeDirection);
 document.addEventListener("keydown", changeDirection);
