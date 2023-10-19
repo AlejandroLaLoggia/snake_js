@@ -6,6 +6,10 @@ const BTN = $("#btn");
 const MSG=$("#msg");
 const GAMECONTAINER=$(".msg_container");
 const LEVEL=$("#level");
+const eat= new Audio(`../assets/audio/eating.mp3`);
+const gameover= new Audio(`../assets/audio/gameover.mp3`);
+const punch= new Audio(`../assets/audio/punch.mp3`);
+
 
 let level=1;
 let scoreLevel=0;
@@ -45,6 +49,7 @@ function gameOver(){
     GAMECONTAINER.classList.remove("msg_container--active");
     location.reload();
 })
+    gameover.play();
   GAMECONTAINER.classList.add("msg_container--active");
    
 }
@@ -101,8 +106,8 @@ const initGame = () => {
         score++;
         SCORE.textContent = score;
         
-        console.log(score, scoreLevel, level)
-
+        eat.play();
+       
         if(score >= (scoreLevel + 5)){
             timeLevel-=25;
             scoreLevel=score;
